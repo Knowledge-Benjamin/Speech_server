@@ -4,6 +4,7 @@ ENV PYTHONUNBUFFERED=1 \
     HF_HOME=/data/huggingface \
     KOKORO_VOICE=af_heart \
     KOKORO_LANG_CODE=a \
+    KOKORO_MAX_CHARS=12000 \
     PORT=8080
 
 RUN apt-get update \
