@@ -19,6 +19,14 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HF_SPACE_REPO: ${{ secrets.HF_SPACE_REPO }}
         run: |
+          if [ -z "${HF_TOKEN}" ]; then
+            echo "HF_TOKEN is not configured in GitHub repository secrets."
+            exit 1
+          fi
+          if [ -z "${HF_SPACE_REPO}" ] || [[ "${HF_SPACE_REPO}" == *"/spaces/"* ]] || [[ "${HF_SPACE_REPO}" == *".hf.space"* ]] || [[ "${HF_SPACE_REPO}" == "***" ]]; then
+            echo "HF_SPACE_REPO must be a Hugging Face Space identifier such as Knowledge-Benjamin/aris-kokoro-tts."
+            exit 1
+          fi
           git config user.email "github-actions@users.noreply.github.com"
           git config user.name "github-actions"
           git remote add hf "https://x-access-token:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE_REPO}.git"

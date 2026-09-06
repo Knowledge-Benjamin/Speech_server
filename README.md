@@ -58,3 +58,16 @@ VOICE_TTS_VOICE=af_heart
 Keep `VOICE_API_KEY` configured if Aris still uses Google Speech-to-Text. The
 TTS service does not require an API key by default; put it behind an authenticated
 proxy or add platform authentication if the Space is private.
+
+## GitHub Actions deployment
+
+The workflow deploys `main` to a Docker-enabled Hugging Face Space. Add these
+repository secrets in GitHub:
+
+- `HF_TOKEN` - a Hugging Face token with write access to the Space
+- `HF_SPACE_REPO` - the Space identifier in `owner/space-name` form, for example
+  `Knowledge-Benjamin/aris-kokoro-tts`
+
+Do not set `HF_SPACE_REPO` to a GitHub repository URL, an `hf.space` URL, or the
+full Hugging Face URL. The target Space must already exist at
+`https://huggingface.co/spaces/<owner>/<space-name>`.
