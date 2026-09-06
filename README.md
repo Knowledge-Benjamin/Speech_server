@@ -39,7 +39,7 @@ is base64 encoded and can be passed directly to the existing Aris voice flow.
 
 - `KOKORO_VOICE` - default Kokoro voice, defaults to `af_heart`
 - `KOKORO_LANG_CODE` - Kokoro pipeline language, defaults to `a` (American English)
-- `KOKORO_MAX_CHARS` - maximum text length, defaults to `5000`
+- `KOKORO_MAX_CHARS` - maximum text length, defaults to `12000`
 - `PORT` - listen port, defaults to `8080`
 
 Kokoro-82M is downloaded from Hugging Face on the first synthesis request and

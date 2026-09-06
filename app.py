@@ -97,7 +97,7 @@ def health() -> dict[str, str]:
 @app.post("/v1/text:synthesize")
 def synthesize(request: SynthesisRequest) -> dict[str, Any]:
     text = request.input.text.strip()
-    max_chars = int(os.getenv("KOKORO_MAX_CHARS", "5000"))
+    max_chars = int(os.getenv("KOKORO_MAX_CHARS", "12000"))
     if not text:
         raise HTTPException(status_code=400, detail="input.text is required")
     if len(text) > max_chars:
