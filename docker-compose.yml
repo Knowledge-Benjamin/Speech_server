@@ -1,0 +1,16 @@
+services:
+  tts-service:
+    build: .
+    container_name: aris-kokoro-tts
+    ports:
+      - "8082:8080"
+    environment:
+      - PORT=8080
+      - KOKORO_VOICE=af_heart
+      - KOKORO_LANG_CODE=a
+    volumes:
+      - kokoro-cache:/data/huggingface
+    restart: unless-stopped
+
+volumes:
+  kokoro-cache:
